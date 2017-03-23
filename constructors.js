@@ -156,12 +156,19 @@ function Spellcaster(name, health, mana) {
 
   Spellcaster.prototype.invoke = function(spell, target) {
 
+    // Validation
     if (!(spell instanceof Spell)) {
       return false;
     }
+    //
 
     if (spell instanceof DamageSpell) {
-
+      if ((target instanceof Spellcaster) && this.spendMana(spell.cost)) {
+        target.inflictDamage(spell.damage);
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return this.spendMana(spell.cost);
     }
