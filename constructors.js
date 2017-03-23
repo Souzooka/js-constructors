@@ -12,9 +12,9 @@
  */
 
 function Spell(name, cost, description) {
-  this._name = name;
-  this._cost = cost;
-  this._description = description;
+  this.name = name;
+  this.cost = cost;
+  this.description = description;
 }
 
   /**
@@ -26,9 +26,7 @@ function Spell(name, cost, description) {
    */
 
 Spell.prototype.getDetails = function() {
-
-  return this._name + ": " + this._description + " Costs " + this._cost + " mana.";
-
+  return this.name + ": " + this.description + " Costs " + this.cost + " mana.";
 };
 
 /**
