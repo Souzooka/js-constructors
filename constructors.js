@@ -54,6 +54,13 @@ Spell.prototype.getDetails = function() {
  * @property {string} description
  */
 
+function DamageSpell(name, cost, damage, description) {
+  Spell.call(this, name, cost, description);
+  this.damage = damage;
+}
+
+DamageSpell.prototype = Object.create(Spell.prototype);
+
 /**
  * Now that you've created some spells, let's create
  * `Spellcaster` objects that can use them!
@@ -70,6 +77,13 @@ Spell.prototype.getDetails = function() {
  * @method  spendMana
  * @method  invoke
  */
+
+function Spellcaster(name, health, mana) {
+  this.name = name;
+  this.health = health;
+  this.mana = mana;
+  this.isAlive = true;
+}
 
   /**
    * @method inflictDamage
