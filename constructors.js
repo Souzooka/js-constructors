@@ -160,15 +160,15 @@ function Spellcaster(name, health, mana) {
     if (!(spell instanceof Spell)) {
       return false;
     }
+
+    if (spell instanceof DamageSpell && !(target instanceof Spellcaster)) {
+      return false;
+    }
     //
 
-    if (spell instanceof DamageSpell) {
-      if ((target instanceof Spellcaster) && this.spendMana(spell.cost)) {
-        target.inflictDamage(spell.damage);
-        return true;
-      } else {
-        return false;
-      }
+    if (spell instanceof DamageSpell && this.spendMana(spell.cost)) {
+      target.inflictDamage(spell.damage);
+      return true;
     } else {
       return this.spendMana(spell.cost);
     }
