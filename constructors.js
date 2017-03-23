@@ -116,6 +116,17 @@ function Spellcaster(name, health, mana) {
    * @return {boolean} success  Whether mana was successfully spent.
    */
 
+  Spellcaster.prototype.spendMana = function(num) {
+
+    if (this.mana < num) {
+      return false;
+    } else {
+      this.mana -= num;
+      return true;
+    }
+
+  };
+
   /**
    * @method invoke
    *
